@@ -1,0 +1,25 @@
+// Lab09
+
+// created Fall 2018 (11/02) 
+// @author: Chan Kim (ck45) for CS 262 at Calvin College 
+
+Exercise 9.1
+Study the lab starter code and answer the following questions.
+
+a. How many API endpoints does this application support and where are they implemented?
+    In PlayerResource.java, the three API endpoints players, player/{id} and player can be found. 
+b. PlayerResource.java
+    i. What is the Java-based technology used to access data from a database?
+        It is Java Database Connectivity(JDBC)
+    ii. Compare and contrast the following:
+        1. SQL query statements vs. JDBC statement objects
+            SQL query statements access the database and return the result set data. JDBC statement objects provide a way to execute data returned by SQL in Java.
+        2. SQL relations vs. JDBC result sets vs. List<Player>
+            SQL relations are represented by tables. JDBC result sets return the data from the SQL statements that read the data from the database query for use in Java and manage the results. List <Player> is a list of the data contained in the JDBC result sets after replacing the data in JSON format. This can be used on the client side.
+    iii. Under what circumstances would the function getValueStringOrNull() be used?
+            Specify a string value of "NULL" to output a value when a value is empty or specified as null.
+c. Player.java
+    i. What purpose does this Player DAO serve?
+        Player DAO includes player objects and methods in Java and allows you to transform player data.
+    ii. How does it compare with the Player table?
+        This is similar to the Player table for handling the same data which are int id, String emailAddress and String name. 
