@@ -1,9 +1,0 @@
-Answer the following questions with respect to the baseline web service your team built in the lab.
-
-a. Is the service RESTful? If not, why not? If so, what key features make it RESTful.
-
-b. What endpoints implement actions that are idempotent? nullipotent?
-
-c. What evidence, if any, do you see of the commonly-cited impedance mismatch problem in object-relational information systems?
-
-d. Would the web service built in the lab be susceptible to SQL-injection attacks?
