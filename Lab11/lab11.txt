@@ -1,0 +1,19 @@
+Homework1
+Changed
+- Added documentation for the class. 
+- Added a comment explaining the approximate activity for the public function calculate. 
+- Added a single space to if, else if and else which have been omitted.
+
+Not Changed
+Since the names and behaviors of the values are obvious, descriptions of the values and descriptions of the actions are omitted.
+
+Homework2
+Changed
+- Changed the name of the values to the proper name because it is the same name we used in the lab before, which can be misleading.
+- Added spaces to the binary operators.
+- Split long texts longer than 79 characters.
+- Deleted unnecessary white space
+- Added simple documentation and comment.
+
+Not Changed
+Since most of the code came from lab05, I wrote a few of my own code and did not fix much or add a comment because it already had the necessary explanations.

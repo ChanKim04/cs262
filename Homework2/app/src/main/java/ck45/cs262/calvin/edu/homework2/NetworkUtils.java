@@ -13,17 +13,16 @@ public class NetworkUtils {
 
     private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
 
-    private static final String BASE_URL =  "https://calvincs262-monopoly.appspot.com/monopoly/v1/players"; // Base URI for the Books API
+    private static final String BASE_URL
+            =  "https://calvincs262-monopoly.appspot.com/monopoly/v1/players"; // Base URI for the Player API
 
-    static String getBookInfo(String queryString){
-
+    static String getPlayerInfo(String queryString){
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
-
         String listJSONString = null;
 
         try {
-              URL requestURL = new URL(BASE_URL);
+            URL requestURL = new URL(BASE_URL);
 
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
@@ -39,9 +38,9 @@ public class NetworkUtils {
             reader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
             while ((line = reader.readLine()) != null) {
-   /* Since it's JSON, adding a newline isn't necessary (it won't affect
-      parsing) but it does make debugging a *lot* easier if you print out the
-      completed buffer for debugging. */
+             /* Since it's JSON, adding a newline isn't necessary (it won't affect
+             parsing) but it does make debugging a *lot* easier if you print out the
+            completed buffer for debugging. */
                 buffer.append(line + "\n");
             }
             if (buffer.length() == 0) {
@@ -65,10 +64,8 @@ public class NetworkUtils {
                 }
             }
         }
-
         Log.d(LOG_TAG, listJSONString);
 
         return queryString + "%" + listJSONString;
     }
-
 }

@@ -18,6 +18,13 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ *  This program displays information about users through the monopoly API.
+ *
+ *  @author Chan Kim
+ *  @version 1.0
+ *  @since 10-20-2018
+ */
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String>{
 
     private EditText mIdInput;
@@ -40,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     public void fetchID(View view) {
-
         String queryString = mIdInput.getText().toString();
 
         InputMethodManager inputManager = (InputMethodManager)
@@ -57,9 +63,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             Bundle queryBundle = new Bundle();
             queryBundle.putString("playerInt", queryString);
             getSupportLoaderManager().restartLoader(0, queryBundle, this);
-        }
-
-        else {
+        }  else {
             mFetchText.setText("");
         }
     }
@@ -68,25 +72,27 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public Loader<String> onCreateLoader(int i, @Nullable Bundle args) {
         Log.d("args bundle", args.getString("playerInt"));
-        return new BookLoader(this, args.getString("playerInt"));
+        return new PlayerLoader(this, args.getString("playerInt"));
     }
 
     @Override
     public void onLoadFinished(@Nullable Loader<String> loader, String s) {
+        /*
+         * Outputs user's information through user ID. User information is output in the order of
+         * ID, name, and e-mail address. If there is no name in the name value, no name is output.
+         */
         String queryInt = s.split("%")[0];
         s = s.split("%")[1];
         try {
             JSONObject jsonObject = new JSONObject(s);
             JSONArray itemsArray = jsonObject.getJSONArray("items");
-
             mFetchText.setText("");
             //Iterate through the results
             for(int i = 0; i<itemsArray.length(); i++){
-                String playerID=null;
-                String name=null;
-                String email=null;
+                String playerID = null;
+                String name = null;
+                String email = null;
                 JSONObject info = itemsArray.getJSONObject(i); //Get the current item
-
                 playerID = info.getString("id");
                 email = info.getString("emailAddress");
                 try {
@@ -97,7 +103,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 }
                 if (queryInt.equals("")){
                     mFetchText.append(playerID + ", " + name + ", " + email + "\n");
-
                 } else {
                     if (queryInt.equals(playerID)) {
                         mFetchText.append(playerID + ", " + name + ", " + email);
